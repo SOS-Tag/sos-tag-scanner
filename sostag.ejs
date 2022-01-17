@@ -8,26 +8,44 @@
 </head>
 
 <body>
-  <h1>KOUKOU C MOI LA FICHE SANTÉÉ</h1>
+  <main>
+    <h1>Fiche médicale</h1>
 
-  <section>
-    <div id="name"><%= name %></div>
-    <div><%= dob %></div>
-  </section>
+    <section>
+      <div id="name"><%= name %></div>
+      <div><%= dob %></div>
+    </section>
 
-  <section>
-    <details>
-      <summary>Contacts d'urgence</summary>
-      Compagne
-      Marie Durand 06 24 78 85 10
-    </details>
-  </section>
+    <hr/>
 
-  <section>
-    <div>
-      Hypertension artérielle
-    </div>
-  </section>
+    <section>
+      <% contacts.forEach((contact) => { %>
+        <div class="contact">
+          <div class="contact-name">
+            <%= contact.name %> (<%= contact.role %>)
+          </div>
+          <div class="contact-content">
+            <%= contact.content %>
+          </div>
+        </div>
+      <% }) %>
+    </section>
+
+    <hr/>
+
+    <section>
+      <% blocks.forEach((block) => { %>
+        <div>
+          <div class="block-name">
+            <%= block.name %>
+          </div>
+          <div class="block-content">
+            <%= block.content %>
+          </div>
+        </div>
+      <% }) %>
+    </section>
+  </main>
 </body>
 
 <style>
@@ -38,12 +56,18 @@
     color: #333;
   }
 
-  section {
-    margin-bottom: 1.5rem;
+  main {
+    margin: 0 auto;
+    padding: 0 1rem 0 1rem;
+    max-width: 600px;
   }
 
-  div {
-    margin-bottom: 0.2rem;
+  section {
+    margin: 1.2rem auto;
+  }
+
+  hr {
+    border: solid 1px #0003;
   }
 
   #name {
@@ -51,8 +75,22 @@
     font-weight: bold;
   }
 
-  details {
-    border: solid 1px #888;
+  .block-name {
+    font-size: 0.9rem;
+    color: #777;
+  }
+
+  .block-content {
+    margin-bottom: 1rem;
+  }
+
+  .contact {
+    margin: 0.5rem auto;
+  }
+
+  .contact-name {
+    font-size: 0.9rem;
+    color: #EC3E55;
   }
 </style>
 
