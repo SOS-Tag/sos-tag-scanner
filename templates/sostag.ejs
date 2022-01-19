@@ -8,26 +8,104 @@
 </head>
 
 <body>
-  <h1>KOUKOU C MOI LA FICHE SANTÉÉ</h1>
+  <h1><%= firstname %> <%= lastname %></h1>
+  <p>dernière mise à jour <%= updatedAt %></p>
 
-  <section>
-    <div id="name"><%= name %></div>
-    <div><%= dob %></div>
-  </section>
+    <% if (sex) { %> 
+    <fieldset>
+      <legend>Sexe</legend>
+        <label><%= sex %></label>
+    </fieldset>
+    <% } %>
 
-  <section>
-    <details>
-      <summary>Contacts d'urgence</summary>
-      Compagne
-      Marie Durand 06 24 78 85 10
-    </details>
-  </section>
+    <% if (birthday) { %> 
+    <fieldset>
+      <legend>Date de naissance</legend>
+        <label><%= birthday %></label>
+    </fieldset>
+    <% } %>
 
-  <section>
-    <div>
-      Hypertension artérielle
-    </div>
-  </section>
+    <% if (height) { %> 
+    <fieldset>
+      <legend>Taille (cm)</legend>
+        <label><%= height %></label>
+    </fieldset>
+    <% } %>
+
+    <% if (weight) { %> 
+    <fieldset>
+      <legend>Poids (kg)</legend>
+        <label><%= weight %></label>
+    </fieldset>
+    <% } %>
+
+    <% if (bloodGroup) { %> 
+    <fieldset>
+      <legend>Groupe sanguin</legend>
+        <label><%= bloodGroup %></label>
+    </fieldset>
+    <% } %>
+
+    <% if (smoking) { %> 
+    <fieldset>
+      <legend>Fumeur·euse</legend>
+        <label><%= smoking %></label>
+    </fieldset>
+    <% } %>
+
+<% if (drugAllergies.length > 0) { %> 
+    <fieldset>
+      <legend>Allergie(s) médicamenteuse(s)</legend>
+      <% for (let allergy in drugAllergies) {%>
+        <label><%= allergy %></label>
+      <%}%>
+    </fieldset>
+    <% } %>
+
+    <% if (antecedents.length > 0) { %> 
+    <fieldset>
+      <legend>Antécédents</legend>
+      <% for (let antecedent in antecedents) {%>
+        <label><%= antecedent %></label>
+      <%}%>
+    </fieldset>
+    <% } %>
+
+    <% if (utdVaccines) { %> 
+    <fieldset>
+      <legend>Vaccins à jour</legend>
+        <label><%= utdVaccins %></label>
+    </fieldset>
+    <% } %>
+
+    <% if (diabetes) { %> 
+    <fieldset>
+      <legend>Diabète</legend>
+        <label><%= diabetes %></label>
+    </fieldset>
+    <% } %>
+
+    <% if (haemophilia) { %> 
+    <fieldset>
+      <legend>Hémophilie</legend>
+        <label><%= haemophilia %></label>
+    </fieldset>
+    <% } %>
+
+    <% if (epilepsy) { %> 
+    <fieldset>
+      <legend>Épilespie</legend>
+        <label><%= epilepsy %></label>
+    </fieldset>
+    <% } %>
+
+    <% if (pacemaker) { %> 
+    <fieldset>
+      <legend>Port d'un pacemaker</legend>
+        <label><%= pacemaker %></label>
+    </fieldset>
+    <% } %>
+
 </body>
 
 <style>

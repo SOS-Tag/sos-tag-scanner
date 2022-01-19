@@ -41,6 +41,11 @@ let fakeData = {
   ]
 };
 
+/*****************/
+/* DEFAULT ROUTE */
+/*****************/
+// What to do here ?
+// It should redirect directly to home website
 app.get('/', function(req, res) {
   ejs.renderFile('sostag.ejs', data,
     {}, function(err, template) {
@@ -59,25 +64,49 @@ app.get('/', function(req, res) {
 // where 123456789 is the user id
 
 app.get('/:id', async (req, res) => {
-  // Create graphql request to API
+  // Create graphql query
   const apiReq = JSON.stringify({
-    query: `query Query($userId: String) {
+    query: `
+      query Query($userId: String) {
         userById(userId: $userId) {
+          response {
+            _id
+            firstname
+            lastname
+            email
+            phone
+            password
+            tokenVersion
+            confirmed
+            createdAt
+            updatedAt
+            sex
+            birthday
+            height
+            weight
+            bloodGroup
+            advanceDirectives
+            drugAllergies
+            smoking
+            antecedents
+            utdVaccines
+            diabetes
+            haemophilia
+            epilepsy
+            pacemaker
+          }
           errors {
             message
             field
           }
-          response {
-            firstname
-            lastname
-          }
         }
-      }`,
+      }
+    `,
     variables: {
       'userId': req.params.id // user id passed in the url
     }
   })
-
+  // fetch data
   const apiRes = await fetch(
     'http://localhost:8080/graphql',
     {
@@ -91,16 +120,13 @@ app.get('/:id', async (req, res) => {
   // handle request error
   if (!apiRes.ok) throw new Error('Error occured : request to sos-tag graphql API failed')
 
-  let data = await apiRes.json()
-  data = data.data
-  console.log('data : ', data)
+  const data = await apiRes.json()
+  console.log('data.data.userById.response : ', data)
 
-  if (data.userById) {
+  // if user is found --> render health sheet, else --> render 'user not found'
+  if (data.data.userById) {
     // Render healt sheet template filled with user data
-    const finalData = { ...fakeData, name: data.userById.response.firstname + " " + data.userById.response.lastname }
-    console.log('finalData : ', finalData)
-
-    ejs.renderFile('templates/sostag.ejs', finalData, {}, (err, template) => {
+    ejs.renderFile('templates/sostag.ejs', data.data.userById.response, {}, (err, template) => {
       if (err) {
         throw err
       } else {
