@@ -53,7 +53,14 @@
     </fieldset>
     <% } %>
 
-<% if (drugAllergies.length > 0) { %> 
+    <% if (organsDonation) { %> 
+    <fieldset>
+      <legend>Don d'organe</legend>
+        <label><%= organsDonation %></label>
+    </fieldset>
+    <% } %>
+
+    <% if (drugAllergies.length > 0) { %> 
     <fieldset>
       <legend>Allergie(s) médicamenteuse(s)</legend>
       <% for (let allergy in drugAllergies) {%>
@@ -67,6 +74,15 @@
       <legend>Antécédents</legend>
       <% for (let antecedent in antecedents) {%>
         <label><%= antecedent %></label>
+      <%}%>
+    </fieldset>
+    <% } %>
+
+    <% if (currentTreatment.length > 0) { %> 
+    <fieldset>
+      <legend>Traitements en cours</legend>
+      <% for (let treatment in currentTreatment) {%>
+        <label><%= treatment %></label>
       <%}%>
     </fieldset>
     <% } %>
