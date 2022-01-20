@@ -10,16 +10,19 @@ const PORT = 8000;
 /*****************/
 // What to do here ?
 // It should redirect directly to home website
-app.get('/', function(_req, res) {
-  ejs.renderFile('sostag.ejs', data,
-    {}, function(err, template) {
-      if (err) {
-        throw err;
-      } else {
-        res.end(template);
-      }
-    });
-});
+// app.get('/', function(_req, res) {
+//   ejs.renderFile('sostag.ejs', data,
+//     {}, function(err, template) {
+//       if (err) {
+//         throw err;
+//       } else {
+//         res.end(template);
+//       }
+//     });
+// });
+
+// Allow use of static files wich are in the public directory
+app.use(express.static("public"))
 
 /****************************************/
 /* ROUTE TO GET USER HEALTH SHEET BY ID */

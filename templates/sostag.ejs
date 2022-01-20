@@ -1,152 +1,213 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SOS Tag</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;600;900&display=swap" rel="stylesheet"> 
 </head>
 
 <body>
-  <h1><%= firstname %> <%= lastname %></h1>
-  <p>dernière mise à jour <%= updatedAt %></p>
+    <nav>
+      <img src="sos-tag_logo-full.svg" alt="sos-tag logo">
+    </nav>
 
-    <% if (sex) { %> 
-    <fieldset>
-      <legend>Sexe</legend>
-        <label><%= sex %></label>
-    </fieldset>
-    <% } %>
+  <div class='container'>
+    <header>
+      <h1><%= firstname %> <%= lastname %></h1>
+      <p>dernière mise à jour <%= updatedAt %></p>
+    </header>
 
-    <% if (birthday) { %> 
-    <fieldset>
-      <legend>Date de naissance</legend>
-        <label><%= birthday %></label>
-    </fieldset>
-    <% } %>
+    <section class='infos'>
+      <% if (sex) { %> 
+      <fieldset>
+        <legend>Sexe</legend>
+          <label><%= sex %></label>
+      </fieldset>
+      <% } %>
 
-    <% if (height) { %> 
-    <fieldset>
-      <legend>Taille (cm)</legend>
-        <label><%= height %></label>
-    </fieldset>
-    <% } %>
+      <% if (birthday) { %> 
+      <fieldset>
+        <legend>Date de naissance</legend>
+          <label><%= birthday %></label>
+      </fieldset>
+      <% } %>
 
-    <% if (weight) { %> 
-    <fieldset>
-      <legend>Poids (kg)</legend>
-        <label><%= weight %></label>
-    </fieldset>
-    <% } %>
+      <% if (height) { %> 
+      <fieldset>
+        <legend>Taille (cm)</legend>
+          <label><%= height %></label>
+      </fieldset>
+      <% } %>
 
-    <% if (bloodGroup) { %> 
-    <fieldset>
-      <legend>Groupe sanguin</legend>
-        <label><%= bloodGroup %></label>
-    </fieldset>
-    <% } %>
+      <% if (weight) { %> 
+      <fieldset>
+        <legend>Poids (kg)</legend>
+          <label><%= weight %></label>
+      </fieldset>
+      <% } %>
 
-    <% if (smoking) { %> 
-    <fieldset>
-      <legend>Fumeur·euse</legend>
-        <label><%= smoking %></label>
-    </fieldset>
-    <% } %>
+      <% if (bloodGroup) { %> 
+      <fieldset>
+        <legend>Groupe sanguin</legend>
+          <label><%= bloodGroup %></label>
+      </fieldset>
+      <% } %>
 
-    <% if (organsDonation) { %> 
-    <fieldset>
-      <legend>Don d'organe</legend>
-        <label><%= organsDonation %></label>
-    </fieldset>
-    <% } %>
+      <% if (smoking) { %> 
+      <fieldset>
+        <legend>Fumeur·euse</legend>
+          <label><%= smoking %></label>
+      </fieldset>
+      <% } %>
 
-    <% if (drugAllergies.length > 0) { %> 
-    <fieldset>
-      <legend>Allergie(s) médicamenteuse(s)</legend>
-      <% for (let allergy in drugAllergies) {%>
-        <label><%= allergy %></label>
-      <%}%>
-    </fieldset>
-    <% } %>
+      <% if (organsDonation) { %> 
+      <fieldset>
+        <legend>Don d'organe</legend>
+          <label><%= organsDonation %></label>
+      </fieldset>
+      <% } %>
 
-    <% if (antecedents.length > 0) { %> 
-    <fieldset>
-      <legend>Antécédents</legend>
-      <% for (let antecedent in antecedents) {%>
-        <label><%= antecedent %></label>
-      <%}%>
-    </fieldset>
-    <% } %>
+      <% if (drugAllergies.length > 0) { %> 
+      <fieldset>
+        <legend>Allergie(s) médicamenteuse(s)</legend>
+        <% for (let allergy in drugAllergies) {%>
+          <label><%= allergy %></label>
+        <%}%>
+      </fieldset>
+      <% } %>
 
-    <% if (currentTreatment.length > 0) { %> 
-    <fieldset>
-      <legend>Traitements en cours</legend>
-      <% for (let treatment in currentTreatment) {%>
-        <label><%= treatment %></label>
-      <%}%>
-    </fieldset>
-    <% } %>
+      <% if (antecedents.length > 0) { %> 
+      <fieldset>
+        <legend>Antécédents</legend>
+        <% for (let antecedent in antecedents) {%>
+          <label><%= antecedent %></label>
+        <%}%>
+      </fieldset>
+      <% } %>
 
-    <% if (utdVaccines) { %> 
-    <fieldset>
-      <legend>Vaccins à jour</legend>
-        <label><%= utdVaccins %></label>
-    </fieldset>
-    <% } %>
+      <% if (currentTreatment.length > 0) { %> 
+      <fieldset>
+        <legend>Traitements en cours</legend>
+        <% for (let treatment in currentTreatment) {%>
+          <label><%= treatment %></label>
+        <%}%>
+      </fieldset>
+      <% } %>
 
-    <% if (diabetes) { %> 
-    <fieldset>
-      <legend>Diabète</legend>
-        <label><%= diabetes %></label>
-    </fieldset>
-    <% } %>
+      <% if (utdVaccines) { %> 
+      <fieldset>
+        <legend>Vaccins à jour</legend>
+          <label><%= utdVaccins %></label>
+      </fieldset>
+      <% } %>
 
-    <% if (haemophilia) { %> 
-    <fieldset>
-      <legend>Hémophilie</legend>
-        <label><%= haemophilia %></label>
-    </fieldset>
-    <% } %>
+      <% if (diabetes) { %> 
+      <fieldset>
+        <legend>Diabète</legend>
+          <label><%= diabetes %></label>
+      </fieldset>
+      <% } %>
 
-    <% if (epilepsy) { %> 
-    <fieldset>
-      <legend>Épilespie</legend>
-        <label><%= epilepsy %></label>
-    </fieldset>
-    <% } %>
+      <% if (haemophilia) { %> 
+      <fieldset>
+        <legend>Hémophilie</legend>
+          <label><%= haemophilia %></label>
+      </fieldset>
+      <% } %>
 
-    <% if (pacemaker) { %> 
-    <fieldset>
-      <legend>Port d'un pacemaker</legend>
-        <label><%= pacemaker %></label>
-    </fieldset>
-    <% } %>
+      <% if (epilepsy) { %> 
+      <fieldset>
+        <legend>Épilespie</legend>
+          <label><%= epilepsy %></label>
+      </fieldset>
+      <% } %>
+
+      <% if (pacemaker) { %> 
+      <fieldset>
+        <legend>Port d'un pacemaker</legend>
+          <label><%= pacemaker %></label>
+      </fieldset>
+      <% } %>
+    </section>
+  </div>
 
 </body>
 
 <style>
+  * {
+    padding: 0;
+    margin: 0;
+    color: #19224F;
+    font-family: "Source Sans Pro";
+  }
+  html {
+    height: 100%;
+    width: 100%;
+  }
   body {
-    background-color: #eee;
-    line-height: 1.5;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    color: #333;
+    height: 100%;
+    width: 100%;
+    background: #F9F9F9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-
-  section {
-    margin-bottom: 1.5rem;
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    padding: 5vw;
   }
-
-  div {
-    margin-bottom: 0.2rem;
+  nav {
+    width: 100vw;
+    height: 80px;
+    background: #FFF;
+    display: flex;
+    align-items: center;
   }
-
-  #name {
-    font-size: 1.2rem;
-    font-weight: bold;
+  img {
+    height: 75%;
+    margin-left: 5vw;
   }
-
-  details {
-    border: solid 1px #888;
+  h1 {
+    font-weight: 900;
+    font-size: 24px;
+  }
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+  }
+  p {
+    font-weight: 300;
+    font-size: 18px;
+  }
+  .infos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .infos > fieldset {
+    min-width: 50%;
+    border: none;
+    margin-top: 2vh;
+    margin-top: 2vw;
+  }
+  fieldset > legend {
+    font-weight: 300;
+    font-size: 16px;
+  }
+  fieldset > label {
+    font-weight: 600;
+    font-size: 18px;
   }
 </style>
 
